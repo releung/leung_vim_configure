@@ -61,7 +61,10 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set incsearch
 
 " 搜索时大小写不敏感
-set ignorecase
+"set ignorecase
+
+" 如果按小写字母 搜索不分大小写，按大写字母则只按大写搜索
+set ignorecase smartcase
 
 " 关闭兼容模式
 set nocompatible
@@ -108,6 +111,8 @@ Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'lilydjwg/fcitx.vim'
+
+Plugin 'lrvick/Conque-Shell'
 
 " 插件列表结束
 call vundle#end()
@@ -162,6 +167,9 @@ set number
 " 高亮显示当前行/列
 set cursorline
 set cursorcolumn
+" 设置高亮风格
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 
 " 高亮显示搜索结果
 set hlsearch
@@ -461,7 +469,7 @@ nmap <Leader>fl :NERDTreeToggle<CR>
 " 设置 NERDTree 子窗口宽度
 let NERDTreeWinSize=22
 " 设置 NERDTree 子窗口位置
-let NERDTreeWinPos="right"
+let NERDTreeWinPos="left"
 " 显示隐藏文件
 let NERDTreeShowHidden=1
 " NERDTree 子窗口中不显示冗余帮助信息
@@ -523,3 +531,45 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 " 调用 gundo 树
 nnoremap <Leader>ud :GundoToggle<CR>
 
+" 设置当文件被改动时自动载入
+set autoread
+
+" 当打开vim且没有文件时自动打开NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif
+
+" 自动补全, 并将光标移回中间
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
+
+" 运行 ConqueTerm 的时候, 不显示警告
+let g:ConqueTerm_StartMessages = 0
+
+"两种流行风格的主题
+colorscheme molokai
+set background=dark
+"colorscheme solarized
+"set background=light
+
+"颜色主题设置
+set t_Co=256
+let g:solarized_termcolors=16
+
+" 系统c函数的查找： ctags -R -f ~/.vim/tags/systags --c-kinds=+p /usr/include /usr/local/include
+autocmd FileType c,cpp set tags+=~/.vim/tags/systags
+
+" 打开 ConqueTerm bash
+nmap <Leader>sh :ConqueTermSplit bash<CR>
+
+" 打开 tagbar
+nmap <Leader>ta :TagbarToggle<CR>
+
+" 光标移动到buffer的顶部和底部时保持3行距离
+set scrolloff=3
+
+" 排序 0:安装位置顺序
+let g:tagbar_sort=0
+" 自动将光标移动过去
+let g:tagbar_autofocus=0
+" 右侧显示 tagbar
+let g:tagbar_left=0

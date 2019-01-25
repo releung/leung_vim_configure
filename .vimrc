@@ -591,3 +591,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " 在 insert mode 中, 将 jj 映射为 ESC 功能
 imap jj <ESC>
+
+" 快速生成 tag 文件
+nmap <Leader>tg :! ctags -R<CR>
+

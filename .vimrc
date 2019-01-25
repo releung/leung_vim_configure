@@ -122,6 +122,8 @@ Plugin 'lilydjwg/fcitx.vim'
 
 Plugin 'lrvick/Conque-Shell'
 Plugin 'terryma/vim-expand-region'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plugin 'junegunn/fzf.vim'
 
 " 插件列表结束
 call vundle#end()
@@ -594,4 +596,8 @@ imap jj <ESC>
 
 " 快速生成 tag 文件
 nmap <Leader>tg :! ctags -R<CR>
+
+:let $FZF_DEFAULT_COMMAND  = 'find . -type f ! -path "./node_modules/*" ! -path "./bower_components/*" ! -path "./.git/*" ! -path "*.swp" ! -path "tags"'
+map <C-P> :tabnew<CR>:FZF<CR>
+map!<C-P> <ESc>:w<CR> :tabnew<CR>:FZF<CR>
 

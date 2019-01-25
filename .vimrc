@@ -17,8 +17,16 @@ filetype plugin on
 " vim 自身（非插件）快捷键
 
 " 定义快捷键到行首和行尾
-nmap LB 0
-nmap LE $
+" lh: line head
+" le: line end
+nmap lh 0
+nmap le $
+
+" 通过 12<Enter> 跳转到第 12 行 (12G 我觉得不称手)
+" fe(file end) : 文件末尾
+" fh(file head): 文件开头
+nmap fe G
+nmap fh gg
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
@@ -52,7 +60,7 @@ nmap <Leader>M %
 " <<
 
 " 让配置变更立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+"autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " >>
 " 其他
@@ -113,6 +121,7 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'lilydjwg/fcitx.vim'
 
 Plugin 'lrvick/Conque-Shell'
+Plugin 'terryma/vim-expand-region'
 
 " 插件列表结束
 call vundle#end()
@@ -121,9 +130,15 @@ filetype plugin indent on
 
 " 配色方案
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 "colorscheme molokai
 "colorscheme phd
+
+colorscheme molokai
+"set background=dark
+
+"colorscheme solarized
+"set background=light
 
 " >>
 " 营造专注气氛
@@ -545,12 +560,6 @@ inoremap { {}<LEFT>
 " 运行 ConqueTerm 的时候, 不显示警告
 let g:ConqueTerm_StartMessages = 0
 
-"两种流行风格的主题
-colorscheme molokai
-set background=dark
-"colorscheme solarized
-"set background=light
-
 "颜色主题设置
 set t_Co=256
 let g:solarized_termcolors=16
@@ -573,3 +582,12 @@ let g:tagbar_sort=0
 let g:tagbar_autofocus=0
 " 右侧显示 tagbar
 let g:tagbar_left=0
+
+" 按一次 v 选择一个字符, 再按一次 v 自动扩展选择一个单词,
+" 再按一次 v 自动扩展选择一段代码
+" 以此类推…, 按<C-v> 回退上一次的选择操作
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" 在 insert mode 中, 将 jj 映射为 ESC 功能
+imap jj <ESC>

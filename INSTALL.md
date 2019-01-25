@@ -8,16 +8,21 @@ git clone https://github.com/releung/leung_vim_configure
 
 2. 
 ```bash
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+mv ~/.vimrc ~/vimrc_back
+mv ~/.vim ~/.vim_back
 ```
 
 3. 
 ```bash
-mv ~/.vimrc ~/.vimrc_back
-cp -a leung_vim_configure/.vimrc ~/.vimrc
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 4. 
+```bash
+cp -a leung_vim_configure/.vimrc ~/.vimrc
+```
+
+5.
 ```bash
 # 打开 vim 执行
 :PluginInstall
@@ -25,8 +30,10 @@ cp -a leung_vim_configure/.vimrc ~/.vimrc
 
 # error 处理
 error 00:
+
     `The ycmd server SHUT DOWN (restart with ':YcmRestartServer'). YCM co...le YCM before using it. F
     ollow the instructions in the documentation.`
+
 处理:
 ```bash
 cd ~/.vim/bundle/YouCompleteMe
@@ -34,9 +41,13 @@ cd ~/.vim/bundle/YouCompleteMe
 ```
 
 在 install.py 的时候, 可能会出现如下错误:
+
     `Could NOT find PythonLibs (missing: PYTHON_INCLUDE_DIRS) (found version "2.7.6")`
+
 处理:
+
     参考: https://github.com/Yelp/MOE/issues/465
+
 OK, this seems to be a bug in /usr/share/cmake-2.8/Modules/FindPythonLibs.cmake file in Ubuntu 14.04.4, not related to MOE at all.
 Following patch fixed the problem, I'm closing the bug:
 ```patch

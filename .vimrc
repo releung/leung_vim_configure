@@ -625,3 +625,69 @@ set hidden
 " 当前目录找不到tags文件时请, 到上层目录查找
 set tags+=./tags;,tags
 
+"""""""""""""
+" 新文件标题
+"""""""""""""
+"新建.c,.h,.sh,.java文件，自动插入文件头
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()"
+""定义函数SetTitle，自动插入文件头
+func! SetTitle()
+	"如果文件类型为.sh文件
+	if &filetype == 'sh'
+        call setline(1, "\# Brief        : ")
+        call append(line("."), "\# Author       : Zen Leung")
+		call append(line(".")+1, "\# Mail         : re2leung@gmail.com")
+		call append(line(".")+2, "\# Created Time : ".strftime("%c"))
+		call append(line(".")+3, "")
+		call append(line(".")+4,"\#!/bin/bash")
+		call append(line(".")+5, "")
+    elseif &filetype == 'python'
+        call setline(1,"#!/usr/bin/env python")
+        call append(line("."),"# coding=utf-8")
+	    call append(line(".")+1, "")
+
+    elseif &filetype == 'ruby'
+        call setline(1,"#!/usr/bin/env ruby")
+        call append(line("."),"# encoding: utf-8")
+	    call append(line(".")+1, "")
+
+"    elseif &filetype == 'mkd'
+"        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
+	else
+		call setline(1, "/**")
+		call append(line("."), " * @file Name    : ".expand("%"))
+		call append(line(".")+1, " * @brief        : ")
+		call append(line(".")+2, " * @author       : Zen Leung")
+		call append(line(".")+3, " * @mail         : re2leung@gmail.com")
+		call append(line(".")+4, " * @created Time : ".strftime("%c"))
+		call append(line(".")+5, " */")
+		call append(line(".")+6, "")
+	endif
+	if expand("%:e") == 'cpp'
+		call append(line(".")+7, "#include <iostream>")
+		call append(line(".")+8, "using namespace std;")
+		call append(line(".")+9, "")
+	endif
+	if &filetype == 'c'
+		call append(line(".")+7, "#include <stdio.h>")
+		call append(line(".")+8, "")
+		call append(line(".")+9, "int main(int argc, char **argv)")
+		call append(line(".")+10, "{")
+		call append(line(".")+11, "    ")
+		call append(line(".")+12, "    return 0;")
+		call append(line(".")+13, "}")
+        " cursor 无效
+        "call cursor(11, 4, 1)
+	endif
+	if expand("%:e") == 'h'
+		call append(line(".")+7, "#ifndef _".toupper(expand("%:r"))."_H_")
+		call append(line(".")+8, "#define _".toupper(expand("%:r"))."_H_")
+		call append(line(".")+9, "#endif")
+	endif
+	if &filetype == 'java'
+		call append(line(".")+7,"public class ".expand("%:r"))
+		call append(line(".")+8,"")
+	endif
+	"新建文件后，自动定位到文件末尾
+endfunc
+autocmd BufNewFile * normal G

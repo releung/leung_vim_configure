@@ -1,4 +1,16 @@
-" 更新时间：2016-03-30 12:15:21
+" 更新时间：2019-1-26 16:03:23
+"
+" 一些常用快捷键:
+" 1. 随时可以使用 ctrl+z 切换到终端下执行命令， 然后再通过 fg 切命令换回 VIM
+" 2. 到N行  <Ngg> <NG> <:N>, 现在 normal mode 回车为到文件末尾, 12回车映射为到12行
+" 3. H, M, L - 屏幕位置，分别为顶部，中间，尾部
+" 4. zz -  normal模式下区中
+" 5. 替换
+"   不确认、非整词<Leader>R
+"   不确认、整词  <Leader>rw
+"   确认、非整词  <Leader>rc
+"   确认、整词    <Leader>rcw <Leader>rwc
+"
 
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"
@@ -22,11 +34,14 @@ filetype plugin on
 nmap lh 0
 nmap le $
 
-" 通过 12<Enter> 跳转到第 12 行 (12G 我觉得不称手)
 " fe(file end) : 文件末尾
 " fh(file head): 文件开头
 nmap fe G
 nmap fh gg
+
+" 通过 12<Enter> 跳转到第 12 行 (12G 我觉得不称手)
+nmap <CR> G
+nmap <BS> gg
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
@@ -430,6 +445,9 @@ highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
 " 选中项
 highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
 
+" 自动补全窗口及选中颜色
+"hi PmenuSel ctermfg=255 ctermbg=242
+
 " 补全功能在注释中同样有效
 let g:ycm_complete_in_comments=1
 
@@ -600,4 +618,10 @@ nmap <Leader>tg :! ctags -R<CR>
 :let $FZF_DEFAULT_COMMAND  = 'find . -type f ! -path "./node_modules/*" ! -path "./bower_components/*" ! -path "./.git/*" ! -path "*.swp" ! -path "tags"'
 map <C-P> :tabnew<CR>:FZF<CR>
 map!<C-P> <ESc>:w<CR> :tabnew<CR>:FZF<CR>
+
+" Ctrl+] 跳转提示文件未保存, 不能跳转问题
+set hidden
+
+" 当前目录找不到tags文件时请, 到上层目录查找
+set tags+=./tags;,tags
 

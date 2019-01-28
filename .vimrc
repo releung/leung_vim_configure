@@ -10,6 +10,8 @@
 "   不确认、整词  <Leader>rw
 "   确认、非整词  <Leader>rc
 "   确认、整词    <Leader>rcw <Leader>rwc
+" 6. include <stdio.h> 将光标放到 stdio.h 上, 使用 g+f 可以跳转到 stdio.h
+"   文件查看, include "xxx.h" 的不能使用(set path+=** 后可以)
 "
 
 " 定义快捷键的前缀，即 <Leader>
@@ -48,6 +50,8 @@ vnoremap <Leader>y "+y
 " 设置快捷键将系统剪贴板内容粘贴至vim
 nmap <Leader>p "+p
 
+" 退出全部
+nmap <Leader>qq :quitall<CR>
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
@@ -492,6 +496,7 @@ let g:disable_protodef_sorting=1
 source $VIMRUNTIME/ftplugin/man.vim
 
 " 定义:Man命令查看各类man信息的快捷键
+nmap <Leader>ma :Man 2 <cword><CR>
 nmap <Leader>man :Man 3 <cword><CR>
 
 " <<
@@ -691,3 +696,6 @@ func! SetTitle()
 	"新建文件后，自动定位到文件末尾
 endfunc
 autocmd BufNewFile * normal G
+
+" gf 跳转 include <xxx.h>, include "xxx.h" 头文件
+set path+=**

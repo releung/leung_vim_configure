@@ -12,6 +12,37 @@
 "   确认、整词    <Leader>rcw <Leader>rwc
 " 6. include <stdio.h> 将光标放到 stdio.h 上, 使用 g+f 可以跳转到 stdio.h
 "   文件查看, include "xxx.h" 的不能使用(set path+=** 后可以)
+" 7. 常用的 quickfix 命令为:
+"   :cc     显示详细错误信息
+"   :cp     跳到上一个错误
+"   :cn     跳到下一个错误
+"   :cl     列出所有错误
+"   :cw     如果有错误列表，则打开 quickfix 窗口，没有则什么也不错
+"   :copen  打开 quickfix 窗口，可以在后面添加窗口高度参数，如10行： :copen 10
+"   :cclose 关闭 quickfix 窗口
+"   :col    到前一个旧的错误列表
+"   :cnew   到后一个较新的错误列表
+" 8. vim-go 使用:
+"   可以参考: https://github.com/fatih/vim-go 和 https://github.com/fatih/vim-go-tutorial
+"
+"   该配置会在保存 .go 文件的时候, 自动 import 使用的包,
+"       自动使用 fmt 格式化源码格式
+"
+"   :GoImports                  vim 会自动导入使用到的包
+"   :GoDef 或命令模式下敲入 gd  自动跳转到函数/变量的定义处
+"   :GoLint                     运行 golint 在当前 Go 源文件上
+"   :GoDoc                      打开当前光标对应符号的 Go 文档
+"   :GoVet                      在当前目录下运行 go vet 在当前 Go 源文件上
+"   :GoRun                      编译运行当前 main package
+"   :GoBuild                    编译当前包，这取决于你的源文件，GoBuild 不产生结果文件
+"   :GoInstall                  安装当前包
+"   :GoTest                     测试你当前路径下地 _test.go 文件
+"   :GoCoverage                 创建一个测试覆盖结果文件，并打开浏览器展示当前包的情况
+"   :GoErrCheck                 检查当前包种可能的未捕获的 errors
+"   :GoFiles                    显示当前包对应的源文件列表
+"   :GoDeps                     显示当前包的依赖包列表
+"   :GoImplements               显示当前类型实现的 interface 列表
+"   :GoRename [to]              将当前光标下的符号替换为 [to]
 "
 
 " 定义快捷键的前缀，即 <Leader>
@@ -143,6 +174,9 @@ Plugin 'lrvick/Conque-Shell'
 Plugin 'terryma/vim-expand-region'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plugin 'junegunn/fzf.vim'
+
+Plugin 'fatih/vim-go'
+Plugin 'honza/vim-snippets'
 
 " 插件列表结束
 call vundle#end()
@@ -701,3 +735,19 @@ autocmd BufNewFile * normal G
 
 " gf 跳转 include <xxx.h>, include "xxx.h" 头文件
 set path+=**
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" go setting
+" go 设置
+"
+" 高亮操作符
+let g:go_highlight_operators = 1
+
+" format with goimports instead of gofmt
+" 这个会自动 import 用到的包
+let g:go_fmt_command = "goimports"
+
+" disable fmt on save
+" 保存的时候禁止自动调整格式及自动 import
+let g:go_fmt_autosave = 0
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

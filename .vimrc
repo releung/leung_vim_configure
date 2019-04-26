@@ -174,6 +174,7 @@ Plugin 'lrvick/Conque-Shell'
 Plugin 'terryma/vim-expand-region'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'inside/vim-grep-operator'
 
 Plugin 'fatih/vim-go'
 Plugin 'rjohnsondev/vim-compiler-go'
@@ -734,8 +735,18 @@ func! SetTitle()
 endfunc
 autocmd BufNewFile * normal G
 
+set grepprg=git\ grep\ -n\ $*
+let g:grep_operator_set_search_register = 1
+nmap <Leader>g <Plug>GrepOperatorOnCurrentDirectory
+vmap <Leader>g <Plug>GrepOperatorOnCurrentDirectory
+nmap <Leader><Leader>g <Plug>GrepOperatorWithFilenamePrompt
+vmap <Leader><Leader>g <Plug>GrepOperatorWithFilenamePrompt
+
 " gf 跳转 include <xxx.h>, include "xxx.h" 头文件
 set path+=**
+
+" grep 搜索
+:nnoremap <leader>g :silent execute "grep! --full-name " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " go setting

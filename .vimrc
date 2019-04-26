@@ -1,4 +1,4 @@
-" 更新时间：2019-3-9 12:27:25
+" 更新时间：2019-4-26 14:36:56
 "
 " 一些常用快捷键:
 " 1. 随时可以使用 ctrl+z 切换到终端下执行命令， 然后再通过 fg 切命令换回 VIM
@@ -176,6 +176,7 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plugin 'junegunn/fzf.vim'
 
 Plugin 'fatih/vim-go'
+Plugin 'rjohnsondev/vim-compiler-go'
 Plugin 'honza/vim-snippets'
 
 " 插件列表结束
@@ -749,5 +750,12 @@ let g:go_fmt_command = "goimports"
 
 " disable fmt on save
 " 保存的时候禁止自动调整格式及自动 import
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
+
+"
+" disable calling Golang every time a buffer is saved
+"let g:golang_onwrite = 0
+
+" Setting highlights for the lines can be disabled
+"let g:golang_inline_highlight = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

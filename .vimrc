@@ -43,7 +43,23 @@
 "   :GoDeps                     显示当前包的依赖包列表
 "   :GoImplements               显示当前类型实现的 interface 列表
 "   :GoRename [to]              将当前光标下的符号替换为 [to]
-"
+" 9. vim-sneak 使用
+"   正常模式下：
+"   s{char}{char} ： 转到下一个{char}{char}；
+"   S{char}{char} ： 转到上一次出现的{char}{char}；
+"   s{char}<Enter> ： 转到下一个{char}；
+"   S{char}<Enter> ： 转到上一个{char}；
+"   s<Enter> ： 重复最后一次跳转；
+"   S<Enter> ： 反方向重复最后一次跳转；
+"   ; ： 转到[count]下一个匹配；
+"   , 或 ： 转到上一个匹配的[count]；
+"   s ： 转到[count]下一个匹配；
+"   S ： 转到上一个匹配的[count]；
+"   [count]s{char}{char} ： 跳转到向下的第 [count] 个匹配；
+"   [count]S{char}{char} ： 跳转到向上的第 [count] 个匹配；
+"   {operator}z{char}{char} ： 当前光标到上一个 {char}{char} 的 operator 操作；
+"   {operator}Z{char}{char} ： 当前光标到下一个 {char}{char} 的 operator 操作；
+"    可视模式的用法和正常模式相似。
 
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"
@@ -166,7 +182,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'lilydjwg/fcitx.vim'
 
@@ -179,6 +194,8 @@ Plugin 'inside/vim-grep-operator'
 Plugin 'fatih/vim-go'
 Plugin 'rjohnsondev/vim-compiler-go'
 Plugin 'honza/vim-snippets'
+
+Plugin 'justinmk/vim-sneak'
 
 " 插件列表结束
 call vundle#end()
@@ -686,12 +703,12 @@ func! SetTitle()
 		call append(line(".")+5, "")
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=utf-8")
+        call append(line("."),"# coding=UTF-8")
 	    call append(line(".")+1, "")
 
     elseif &filetype == 'ruby'
         call setline(1,"#!/usr/bin/env ruby")
-        call append(line("."),"# encoding: utf-8")
+        call append(line("."),"# encoding: UTF-8")
 	    call append(line(".")+1, "")
 
 "    elseif &filetype == 'mkd'
@@ -770,3 +787,6 @@ let g:go_fmt_autosave = 1
 " Setting highlights for the lines can be disabled
 "let g:golang_inline_highlight = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8
+
+let g:sneak#label = 1

@@ -1,31 +1,42 @@
 这个是自己安装过程的记录:
 # 安装流程
 
-1. 
+## 1. 
 ```bash
 git clone https://github.com/releung/leung_vim_configure
 ```
 
-2. 
+## 2. 
 ```bash
 mv ~/.vimrc ~/vimrc_back
 mv ~/.vim ~/.vim_back
 ```
 
-3. 
+## 3. 
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-4. 
+## 4. 
 ```bash
 cp -a leung_vim_configure/.vimrc ~/.vimrc
 ```
 
-5.
+## 5.
 ```bash
 # 打开 vim 执行
 :PluginInstall
+```
+
+## 6. install vim8
+```bash
+# add add-apt-repository command
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install vim
+# 查看版本
+vim --version
 ```
 
 # error 处理

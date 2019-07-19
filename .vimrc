@@ -801,3 +801,7 @@ vmap <silent> <Leader>w <Plug>TranslateWV
 " Leader>r 替换光标下的文本为翻译内容
 nmap <silent> <Leader>r <Plug>TranslateR
 vmap <silent> <Leader>r <Plug>TranslateRV
+
+" 解决插入模式下delete/backspce键失效问题
+" 参考![这里](https://www.smslit.top/2016/11/27/vim-backspace-invalid/)
+set backspace=2

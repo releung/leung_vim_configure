@@ -805,3 +805,15 @@ vmap <silent> <Leader>r <Plug>TranslateRV
 " 解决插入模式下delete/backspce键失效问题
 " 参考![这里](https://www.smslit.top/2016/11/27/vim-backspace-invalid/)
 set backspace=2
+
+" 取消对 vim 版本不符合的警告
+let g:go_version_warning = 0
+
+" https://github.com/SirVer/ultisnips/issues/593
+" UltiSnips#TrackChange   Could not load library libpython3.7m.a 问题
+" autocmd! UltiSnips_AutoTrigger
+" 解决 'autocmd! UltiSnips_AutoTrigger' 的 E216: No such group or event: UltiSnips_AutoTrigger
+augroup ultisnips_no_auto_expansion
+    au!
+    au VimEnter * au! UltiSnips_AutoTrigger
+augroup END

@@ -674,7 +674,10 @@ vmap <C-v> <Plug>(expand_region_shrink)
 imap jj <ESC>
 
 " 快速生成 tag 文件
-nmap <Leader>tg :! ctags -R<CR>
+"nmap <Leader>tg :! ctags -R<CR>
+" `pwd` 设置为绝对路径
+" 函数声明也要加入索引
+nmap <Leader>tg :! ctags -I __THROW -I __attribute_pure__ -I __nonnull -I __attribute__ --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q -R `pwd`<CR>
 
 :let $FZF_DEFAULT_COMMAND  = 'find . -type f ! -path "./node_modules/*" ! -path "./bower_components/*" ! -path "./.git/*" ! -path "*.swp" ! -path "tags"'
 map <C-P> :tabnew<CR>:FZF<CR>
@@ -684,7 +687,8 @@ map!<C-P> <ESc>:w<CR> :tabnew<CR>:FZF<CR>
 set hidden
 
 " 当前目录找不到tags文件时请, 到上层目录查找
-set tags+=./tags;,tags
+set tags+=./tags
+set tags+=,tags
 
 """""""""""""
 " 新文件标题

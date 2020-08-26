@@ -822,3 +822,9 @@ augroup ultisnips_no_auto_expansion
     au!
     au VimEnter * au! UltiSnips_AutoTrigger
 augroup END
+
+set showmode autoindent autowrite tabstop=2 shiftwidth=2 showmatch wm=1
+
+" 这两个可以不需要
+"let g:mkdp_path_to_chrome = "firefox"
+"let g:mkdp_auto_open = 1

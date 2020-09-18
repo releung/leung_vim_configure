@@ -57,7 +57,7 @@ sudo npm -g install instant-markdown-d
 ```
 
 # error 处理
-error 00:
+## error 00:
 
     `The ycmd server SHUT DOWN (restart with ':YcmRestartServer'). YCM co...le YCM before using it. F
     ollow the instructions in the documentation.`
@@ -93,3 +93,29 @@ index 1cf6bde..61c83d2 100644
 
  # These variables have been historically named in this module different from
 ```
+
+## error 01:
+选择句子不能翻译问题:  
+```
+[vim-translator] translator.py: error: unrecognized arguments: 
+```
+
+处理:  
+参考[这里](https://github.com/voldikss/vim-translator/issues/24#issuecomment-683264363)  
+~/.vim/bundle/vim-translate-me  
+```patch
+diff --git a/autoload/translator/util.vim b/autoload/translator/util.vim
+index c068101..36c98c0 100644
+--- a/autoload/translator/util.vim
++++ b/autoload/translator/util.vim
+@@ -153,6 +153,7 @@ function! translator#util#text_proc(text) abort
+   let text = substitute(text, "\n\r", ' ', 'g')
+   let text = substitute(text, '\v^\s+', '', '')
+   let text = substitute(text, '\v\s+$', '', '')
+-  let text = shellescape(text)
++   let text = escape(text, '"')
++  let text = printf('"%s"', text)
+   return text
+ endfunction
+```
+

@@ -798,11 +798,11 @@ set encoding=utf-8
 let g:sneak#label = 1
 
 " <Leader>t 翻译光标下的文本，在命令行回显翻译内容
-nmap <silent> <Leader>t <Plug>Translate
-vmap <silent> <Leader>t <Plug>TranslateV
-" Leader>w 翻译光标下的文本，在窗口中显示翻译内容
-nmap <silent> <Leader>w <Plug>TranslateW
-vmap <silent> <Leader>w <Plug>TranslateWV
+"nmap <silent> <Leader>t <Plug>Translate
+"vmap <silent> <Leader>t <Plug>TranslateV
+" Leader>t 翻译光标下的文本，在窗口中显示翻译内容
+nmap <silent> <Leader>t <Plug>TranslateW
+vmap <silent> <Leader>t <Plug>TranslateWV
 " Leader>r 替换光标下的文本为翻译内容
 nmap <silent> <Leader>r <Plug>TranslateR
 vmap <silent> <Leader>r <Plug>TranslateRV

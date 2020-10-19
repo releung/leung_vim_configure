@@ -678,7 +678,9 @@ imap jj <ESC>
 " `pwd` 设置为绝对路径
 " 函数声明也要加入索引
 "nmap <Leader>tg :! ctags -I __THROW -I __attribute_pure__ -I __nonnull -I __attribute__ --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q -R `pwd`<CR>
-nmap <Leader>tg :! ctags -R --languages=c++ --langmap=c++:+.inl -h +.inl --c++-kinds=+px --fields=+aiKSz --extra=+q `pwd`<CR>
+"nmap <Leader>tg :! ctags -R --languages=c++ --langmap=c++:+.inl -h +.inl --c++-kinds=+px --fields=+aiKSz --extra=+q `pwd`<CR>
+" 之前的索引总有查找不到的情况, 直接用 -R 参数还更好, 很完整.
+nmap <Leader>tg :! ctags -R `pwd` <CR>
 
 :let $FZF_DEFAULT_COMMAND  = 'find . -type f ! -path "./node_modules/*" ! -path "./bower_components/*" ! -path "./.git/*" ! -path "*.swp" ! -path "tags"'
 map <C-P> :tabnew<CR>:FZF<CR>
@@ -709,7 +711,7 @@ func! SetTitle()
 		call append(line(".")+5, "")
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=UTF-8")
+        call append(line("."),"# -*- coding:utf-8 -*-")
 	    call append(line(".")+1, "")
 
     elseif &filetype == 'ruby'

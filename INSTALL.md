@@ -119,3 +119,22 @@ index c068101..36c98c0 100644
  endfunction
 ```
 
+## error 02: vim 中 fzf 错误
+
+```shell
+/home/elliot/.vim/bundle/fzf/bin/fzf'  '--multi' '--prompt' '~/w/k/l/linux-5.0.1/' --expect=ctrl-v,ctrl-x,ctrl-t --no-height > /tmp/vyvfakx/9
+
+# 单独执行段错误
+/home/elliot/.vim/bundle/fzf/bin/fzf 
+
+# 解决
+cd ~/.vim/bundle/fzf/
+git pull
+./install
+
+# 再次执行 /home/elliot/.vim/bundle/fzf/bin/fzf, 不会段错误就没问题了
+
+
+```
+
+

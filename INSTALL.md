@@ -1,6 +1,8 @@
 这个是自己安装过程的记录:
 # 安装流程
 
+> vim 配合 Guake(默认 f12 唤醒), 以及 tmux 很好用.
+
 ## 1. 
 ```bash
 git clone https://github.com/releung/leung_vim_configure

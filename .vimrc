@@ -158,44 +158,173 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+
+" vim 文本编辑器的精确颜色方案
 Plugin 'altercation/vim-colors-solarized'
+
+" 配色方案
 Plugin 'tomasr/molokai'
+
+" 深蓝色背景配色方案
 Plugin 'vim-scripts/phd'
-Plugin 'Lokaltog/vim-powerline'
+
+" 废弃
+"Plugin 'Lokaltog/vim-powerline'
+Plugin 'powerline/powerline'
+
+" c++语法高亮显示(包括c++ 11/14/17)
 Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" 可视化显示在代码的缩进级别
 Plugin 'nathanaelkane/vim-indent-guides'
+
+" switching between companion source files (e.g. ".h" and ".cpp")
 Plugin 'derekwyatt/vim-fswitch'
+
+" toggle, display and navigate marks
 Plugin 'kshenoy/vim-signature'
+" mx           Toggle mark 'x' and display it in the leftmost column
+" dmx          Remove mark 'x' where x is a-zA-Z
+"
+" m,           Place the next available mark
+" m.           If no mark on line, place the next available mark. Otherwise, remove (first) existing mark.
+" m-           Delete all marks from the current line
+" m<Space>     Delete all marks from the current buffer
+" ]`           Jump to next mark
+" [`           Jump to prev mark
+" ]'           Jump to start of next line containing a mark
+" ['           Jump to start of prev line containing a mark
+" `]           Jump by alphabetical order to next mark
+" `[           Jump by alphabetical order to prev mark
+" ']           Jump by alphabetical order to start of next line having a mark
+" '[           Jump by alphabetical order to start of prev line having a mark
+" m/           Open location list and display marks from current buffer
+"
+" m[0-9]       Toggle the corresponding marker !@#$%^&*()
+" m<S-[0-9]>   Remove all markers of the same type
+" ]-           Jump to next line having a marker of the same type
+" [-           Jump to prev line having a marker of the same type
+" ]=           Jump to next line having a marker of any type
+" [=           Jump to prev line having a marker of any type
+" m?           Open location list and display markers from current buffer
+"  m<BS>        Remove all markers
+
+" Easily Highlight Lines with Marks, and Add/Remove Marks
 Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+" <F1>            Turn on/update highlighting for all lines with markers
+" <F2>            Turn off highlighting for lines with markers
+" <SHIFT-F2> Erase all markers [a-z]
+" <F5>             Add a mark on the current line (and highlight)
+" <SHIFT-F5> Remove the mark on the current line
+
+" displays tags in a window, ordered by scope
+" <Leader> ta 就是用这个插件
 Plugin 'majutsushi/tagbar'
+
+" indexing all files in project with ctags
 Plugin 'vim-scripts/indexer.tar.gz'
+
+" Just a library for some scripts
 Plugin 'vim-scripts/DfrankUtil'
+
+" managing options for different projects
 Plugin 'vim-scripts/vimprj'
+
+" support asynchronous searching, and lets you edit file in-place with Edit Mode.
 Plugin 'dyng/ctrlsf.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
+
+" 废弃
+"Plugin 'terryma/vim-multiple-cursors'
+" Multiple cursors plugin
+Plugin 'mg979/vim-visual-multi'
+" select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
+" create cursors vertically with Ctrl-Down/Ctrl-Up
+" select one character at a time with Shift-Arrows
+" press n/N to get next/previous occurrence
+" press [/] to select next/previous cursor
+" press q to skip current and get next occurrence
+" press Q to remove current cursor/selection
+" start insert mode with i,a,I,A
+
+" Vim plugin for intensely nerdy commenting powers
+Plugin 'preservim/nerdcommenter'
+
+" Ascii drawing plugin: lines, ellipses, arrows, fills, and more!
 Plugin 'vim-scripts/DrawIt'
+" \di           (starts in normal     drawing mode)       *drawit-\di*
+" :DrawIt       (starts in normal     drawing mode)       *drawit-DrawIt*
+" :DIstart      (starts in normal     drawing mode)       *drawit-DIstart*
+" :DIstart S    (starts in single-bar drawing mode)
+" :DIstart D    (starts in double-bar drawing mode)
+" :DInrml       (starts in normal     drawing mode)       *drawit-DInrml*
+" :DIsngl       (starts in single-bar drawing mode)       *drawit-DIsngl*
+" :DIdbl        (starts in double-bar drawing mode)       *drawit-DIdbl*
+
+" The ultimate snippet solution for Vim
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'derekwyatt/vim-protodef'
-Plugin 'scrooloose/nerdtree'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'gcmt/wildfire.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'lilydjwg/fcitx.vim'
-
-Plugin 'lrvick/Conque-Shell'
-Plugin 'terryma/vim-expand-region'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plugin 'junegunn/fzf.vim'
-Plugin 'inside/vim-grep-operator'
-
-Plugin 'fatih/vim-go'
-Plugin 'rjohnsondev/vim-compiler-go'
+" Snippets are separated from the engine. Add this if you want them
 Plugin 'honza/vim-snippets'
 
+" A code-completion engine for Vim
+Plugin 'Valloric/YouCompleteMe'
+
+" pulling in C++ function prototypes into implementation files
+Plugin 'derekwyatt/vim-protodef'
+
+" A tree explorer plugin for vim
+Plugin 'scrooloose/nerdtree'
+
+" Elegant buffer explorer - takes very little screen space
+Plugin 'fholgado/minibufexpl.vim'
+
+" Smart selection of the closest text object
+Plugin 'gcmt/wildfire.vim'
+
+" A git mirror of gundo.vim
+Plugin 'sjl/gundo.vim'
+
+" Instant Markdown previews from VIm!
+Plugin 'suan/vim-instant-markdown'
+" Plugin 'iamcco/markdown-preview.vim'
+
+" keep and restore fcitx state when leaving/re-entering insert mode
+Plugin 'lilydjwg/fcitx.vim'
+
+" Run interactive commands inside a Vim buffer
+Plugin 'lrvick/Conque-Shell'
+" :ConqueTerm bash
+" :ConqueTerm mysql -h localhost -u joe -p sock_collection
+" :ConqueTerm Powershell.exe
+" :ConqueTerm C:\Python27\python.exe
+"To open ConqueTerm in a new horizontal or vertical buffer use:
+" :ConqueTermSplit <command>
+" :ConqueTermVSplit <command>
+" :ConqueTermTab <command>
+
+" Vim plugin that allows you to visually select increasingly larger regions of
+" text using the same key combination.
+Plugin 'terryma/vim-expand-region'
+
+" A command-line fuzzy finder
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plugin 'junegunn/fzf.vim'
+
+" ring motion and visual selection to the :grep command
+Plugin 'inside/vim-grep-operator'
+
+" Go development plugin for Vim
+Plugin 'fatih/vim-go'
+
+" Vim compiler plugin for Go (golang)
+Plugin 'rjohnsondev/vim-compiler-go'
+
+" The missing motion for Vim
+" 两个字符快速跳转
 Plugin 'justinmk/vim-sneak'
+" s{char}{char}
+
+" Asynchronous translating plugin for Vim/Neovim
+" 异步翻译
 Plugin 'voldikss/vim-translate-me'
 
 " 插件列表结束
@@ -204,16 +333,16 @@ filetype plugin indent on
 " <<<<
 
 " 配色方案
-set background=dark
+let g:solarized_termcolors=256
+"set background=dark
+set background=light
 "colorscheme solarized
 "colorscheme molokai
-"colorscheme phd
+colorscheme phd
 
-colorscheme molokai
-"set background=dark
-
-"colorscheme solarized
-"set background=light
+" 换行用 $ 显示， tab 用 ^ 显示
+"set list
+let g:solarized_visibility='high'  "'low' 'high' 'normal'
 
 " >>
 " 营造专注气氛
@@ -674,13 +803,9 @@ vmap <C-v> <Plug>(expand_region_shrink)
 imap jj <ESC>
 
 " 快速生成 tag 文件
-"nmap <Leader>tg :! ctags -R<CR>
-" `pwd` 设置为绝对路径
-" 函数声明也要加入索引
-"nmap <Leader>tg :! ctags -I __THROW -I __attribute_pure__ -I __nonnull -I __attribute__ --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q -R `pwd`<CR>
-"nmap <Leader>tg :! ctags -R --languages=c++ --langmap=c++:+.inl -h +.inl --c++-kinds=+px --fields=+aiKSz --extra=+q `pwd`<CR>
-" 之前的索引总有查找不到的情况, 直接用 -R 参数还更好, 很完整.
+" nmap <Leader>tg :! ctags -R --languages=c++ --langmap=c++:+.inl -h +.inl --c++-kinds=+px --fields=+aiKSz --extra=+q `pwd` <CR>
 nmap <Leader>tg :! ctags -R `pwd` <CR>
+
 
 :let $FZF_DEFAULT_COMMAND  = 'find . -type f ! -path "./node_modules/*" ! -path "./bower_components/*" ! -path "./.git/*" ! -path "*.swp" ! -path "tags"'
 map <C-P> :tabnew<CR>:FZF<CR>
@@ -692,6 +817,8 @@ set hidden
 " 当前目录找不到tags文件时请, 到上层目录查找
 set tags+=./tags
 set tags+=,tags
+set tags+=/tdGUI/output/include/tags
+
 
 """""""""""""
 " 新文件标题
@@ -827,6 +954,70 @@ augroup END
 
 set showmode autoindent autowrite tabstop=2 shiftwidth=2 showmatch wm=1
 
-" 这两个可以不需要
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" octol/vim-cpp-enhanced-highlight
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nathanaelkane/vim-indent-guides
+
+let g:indent_guides_enable_on_vim_startup = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" preservim/nerdcommenter
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:sneak#label = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "let g:mkdp_path_to_chrome = "firefox"
 "let g:mkdp_auto_open = 1

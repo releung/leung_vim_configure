@@ -60,6 +60,8 @@
 "   {operator}z{char}{char} ： 当前光标到上一个 {char}{char} 的 operator 操作；
 "   {operator}Z{char}{char} ： 当前光标到下一个 {char}{char} 的 operator 操作；
 "    可视模式的用法和正常模式相似。
+"
+" 10. <Leader>bl 打开/关闭打开文件状态栏
 
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"

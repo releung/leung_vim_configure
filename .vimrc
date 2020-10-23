@@ -336,8 +336,11 @@ filetype plugin indent on
 let g:solarized_termcolors=256
 "set background=dark
 set background=light
+" 白灰色
 "colorscheme solarized
+" 黑色
 "colorscheme molokai
+" 透明
 colorscheme phd
 
 " 换行用 $ 显示， tab 用 ^ 显示

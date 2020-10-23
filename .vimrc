@@ -336,6 +336,14 @@ filetype plugin indent on
 
 " 配色方案
 let g:solarized_termcolors=256
+
+" 设置透明
+" hi Normal ctermfg=252 ctermbg=none
+" 设置不透明
+" hi Normal ctermfg=252 ctermbg=256
+
+" 主题选择: https://vimcolors.com/
+"
 "set background=dark
 set background=light
 " 白灰色

@@ -830,6 +830,7 @@ set hidden
 " 当前目录找不到tags文件时请, 到上层目录查找
 set tags+=./tags
 set tags+=,tags
+set tags+=~/.vim/systags
 set tags+=/tdGUI/output/include/tags
 
 
@@ -935,7 +936,9 @@ let g:go_fmt_autosave = 1
 " Setting highlights for the lines can be disabled
 "let g:golang_inline_highlight = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set encoding=utf-8
+
+" 粘贴上一次 yy 的内容
+nnoremap <leader>00 "0p
 
 let g:sneak#label = 1
 
@@ -949,6 +952,7 @@ vmap <silent> <Leader>t <Plug>TranslateWV
 nmap <silent> <Leader>r <Plug>TranslateR
 vmap <silent> <Leader>r <Plug>TranslateRV
 
+let g:go_version_warning = 0
 " 解决插入模式下delete/backspce键失效问题
 " 参考![这里](https://www.smslit.top/2016/11/27/vim-backspace-invalid/)
 set backspace=2
@@ -1031,6 +1035,39 @@ let g:UltiSnipsEditSplit="vertical"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:sneak#label = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" cscode
+if has("cscope")
+    set cscopetag   " 使支持用 Ctrl+]  和 Ctrl+t 快捷键在代码间跳来跳去
+    " check cscope for definition of a symbol before checking ctags:
+    " set to 1 if you want the reverse search order.
+     set csto=1
+
+     " add any cscope database in current directory
+     if filereadable("cscope.out")
+         cs add cscope.out
+     " else add the database pointed to by environment variable
+     elseif $CSCOPE_DB !=""
+         cs add $CSCOPE_DB
+     endif
+
+     " show msg when any other cscope db added
+     set cscopeverbose
+
+     nmap <C-/>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+     nmap <C-/>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+     nmap <C-/>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+     nmap <C-/>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+     nmap <C-/>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+     nmap <C-/>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+     nmap <C-/>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+     nmap <C-/>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+endif
+
+
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin1
+set termencoding=utf-8
+set encoding=utf-8
 
 "let g:mkdp_path_to_chrome = "firefox"
 "let g:mkdp_auto_open = 1

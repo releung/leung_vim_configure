@@ -329,6 +329,11 @@ Plugin 'justinmk/vim-sneak'
 " 异步翻译
 Plugin 'voldikss/vim-translate-me'
 
+" Vim plugin to diff two directories
+" vim 比较目录插件
+" 使用方法 :DirDiff <dir1> <dir2>
+Plugin 'will133/vim-dirdiff'
+
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on

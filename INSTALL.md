@@ -16,7 +16,13 @@ mv ~/.vim ~/.vim_back
 
 ## 3. 
 ```bash
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+或者使用代理
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://github.rc1844.workers.dev/junegunn/vim-plug/raw/master/plug.vim
 ```
 
 ## 4. 

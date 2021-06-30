@@ -974,7 +974,7 @@ augroup ultisnips_no_auto_expansion
     au VimEnter * au! UltiSnips_AutoTrigger
 augroup END
 
-set showmode autoindent autowrite tabstop=2 shiftwidth=2 showmatch wm=1
+set showmode autoindent autowrite showmatch wm=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " octol/vim-cpp-enhanced-highlight

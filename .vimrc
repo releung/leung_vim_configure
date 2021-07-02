@@ -334,8 +334,7 @@ Plug 'https://github.com.cnpmjs.org/lrvick/Conque-Shell'
 Plug 'https://github.com.cnpmjs.org/terryma/vim-expand-region'
 
 " A command-line fuzzy finder
-Plug 'https://github.com.cnpmjs.org/junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'https://github.com.cnpmjs.org/junegunn/fzf.vim'
+Plug 'https://github.com.cnpmjs.org/junegunn/fzf',{'do':{->fzf#install()}}
 
 " ring motion and visual selection to the :grep command
 Plug 'https://github.com.cnpmjs.org/inside/vim-grep-operator'

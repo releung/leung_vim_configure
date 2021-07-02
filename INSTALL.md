@@ -47,24 +47,24 @@ sudo apt install vim
 vim --version
 ```
 
-7. markdown 浏览器自动打开预览
+## 7. markdown 浏览器自动打开预览
 > suan/vim-instant-markdown 插件需要安装以下依赖才可以正常工作
 ```bash
-# 安装 nodejs, npm
+#### 安装 nodejs, npm
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 sudo apt-get install npm
 
-# 更新 npm
+#### 更新 npm
 sudo npm install npm -g
 
-# 切换国内源，安装
+#### 切换国内源，安装
 sudo npm config set registry https://registry.npm.taobao.org
 sudo npm -g install instant-markdown-d
 ```
 
-8. ctags, gtags, cacope 索引
+## 8. ctags, gtags, cacope 索引
 
 gtags:
 ```bash
@@ -106,6 +106,11 @@ global -x main
 Ctrl+} 跳转到函数定义处
 Ctrl+t 跳转回来
 
+```
+
+## 9. 手动安装 fzf
+```bash
+cd ~/.fzf && git pull && ./install
 ```
 
 # error 处理

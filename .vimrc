@@ -75,6 +75,18 @@
 "    <leader>ca		Find places where current symbol is assigned
 "    <leader>cz		Find current word in ctags database
 "
+" 12.
+"     <Leader>cn
+"     <Leader>cc
+" *   <Leader>c<space> 既可以注释，可以取消注释. 仅仅用这个就行了.
+"           上面三个都是 /** */ 注释当前行， 或者选择行全部行注释
+"
+" *   <Leader>cs     选中块注释
+" *   <Leader>c$     注释光标到行尾的当前行. 因为c$也是从光标到行尾的快捷键
+" *   <Leader>cA     在行尾添加注释分隔符，并在它们之间进入插入模式
+"     2<Leader>cc    光标以下2行添加注释(含光标行)
+"     2<Leader>cu    光标以下2行取消注释
+"     2<Leader>cm    光标以下2行添加块注释
 
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"

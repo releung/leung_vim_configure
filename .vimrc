@@ -13,15 +13,16 @@
 " 6. include <stdio.h> 将光标放到 stdio.h 上, 使用 g+f 可以跳转到 stdio.h
 "   文件查看, include "xxx.h" 的不能使用(set path+=** 后可以)
 " 7. 常用的 quickfix 命令为:
-"   :cc     显示详细错误信息
-"   :cp     跳到上一个错误
-"   :cn     跳到下一个错误
-"   :cl     列出所有错误
-"   :cw     如果有错误列表，则打开 quickfix 窗口，没有则什么也不错
-"   :copen  打开 quickfix 窗口，可以在后面添加窗口高度参数，如10行： :copen 10
-"   :cclose 关闭 quickfix 窗口
+"   :cc     显示详细错误信息    <Leader>qc
+"   :cp     跳到上一个错误      <Leader>qp
+"   :cn     跳到下一个错误      <Leader>qn
+"   :cl     列出所有错误        <Leader>ql
+"   :cw     如果有错误列表，则打开 quickfix 窗口，没有则什么也不错                      <Leader>qw
+"   :copen  打开 quickfix 窗口，可以在后面添加窗口高度参数，如10行： :copen 10          <Leader>qop
+"   :cclose 关闭 quickfix 窗口          <Leader>qo
 "   :col    到前一个旧的错误列表
 "   :cnew   到后一个较新的错误列表
+"
 " 8. vim-go 使用:
 "   可以参考: https://github.com/fatih/vim-go 和 https://github.com/fatih/vim-go-tutorial
 "
@@ -1151,3 +1152,11 @@ let g:gutentags_cache_dir = expand('~/.cache/tags')
 " change focus to quickfix window after search (optional).
 let g:gutentags_plus_switch = 1
 
+" quickfix 快捷键
+nmap <Leader>qc :cc<CR>
+nmap <Leader>qp :cp<CR>
+nmap <Leader>qn :cn<CR>
+nmap <Leader>ql :cl<CR>
+nmap <Leader>qw :cw<CR>
+nmap <Leader>qop :copen<CR>
+nmap <Leader>qo :cclose<CR>

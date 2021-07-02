@@ -64,6 +64,50 @@ sudo npm config set registry https://registry.npm.taobao.org
 sudo npm -g install instant-markdown-d
 ```
 
+8. ctags, gtags, cacope 索引
+
+gtags:
+```bash
+sudo apt build-dep global
+sudo apt install libncurses5-dev libncursesw5-dev
+
+# 国内镜像下载
+wget https://mirrors.tuna.tsinghua.edu.cn/gnu/global/global-6.6.7.tar.gz
+
+# 编译安装
+./configure --with-sqlite3   # gtags可以使用Sqlite3作为数据库, 在编译时需要加这个参数
+make -j2
+sudo make install
+
+# 将生成的文件拷贝到.vim对应的目录
+cp gtags-cscope.vim  gtags.vim ~/.vim/plugin/
+
+# 生成索引文件: GPATH GRTAGS GTAGS
+gtags
+
+# 配置 ~/.vimrc
+
+"gtags 设置项
+set cscopetag " 使用 cscope 作为 tags 命令
+set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
+let GtagsCscope_Auto_Load = 1
+let CtagsCscope_Auto_Map = 1
+let GtagsCscope_Quiet = 1
+let gtags_file=findfile("GTAGS", ";") "查找 gtags 文件
+if !empty(gtags_file)
+    exe "cs add" gtags_file
+endif
+
+# 命令搜索函数
+global -x main
+
+
+# 文件中搜索
+Ctrl+} 跳转到函数定义处
+Ctrl+t 跳转回来
+
+```
+
 # error 处理
 ## error 00:
 

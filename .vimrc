@@ -62,6 +62,19 @@
 "    可视模式的用法和正常模式相似。
 "
 " 10. <Leader>bl 打开/关闭打开文件状态栏
+" 
+" 11. gutentags_plus 和 vim-gutentags 管理
+"    <leader>cs		Find symbol (reference) under cursor
+"    <leader>cg		Find symbol definition under cursor
+"    <leader>cd		Functions called by this function
+"    <leader>cc		Functions calling this function
+"    <leader>ct		Find text string under cursor
+"    <leader>ce		Find egrep pattern under cursor
+"    <leader>cf		Find file name under cursor
+"    <leader>ci		Find files #including the file name under cursor
+"    <leader>ca		Find places where current symbol is assigned
+"    <leader>cz		Find current word in ctags database
+"
 
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"
@@ -158,6 +171,9 @@ filetype off
 " vim-plug 环境设置
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com.cnpmjs.org/ludovicchabant/vim-gutentags'
+Plug 'https://github.com.cnpmjs.org/skywind3000/gutentags_plus'
 
 " vim 文本编辑器的精确颜色方案
 Plug 'https://github.com.cnpmjs.org/altercation/vim-colors-solarized'
@@ -833,10 +849,12 @@ map!<C-P> <ESc>:w<CR> :tabnew<CR>:FZF<CR>
 set hidden
 
 " 当前目录找不到tags文件时请, 到上层目录查找
+set tags=tags;
+set autochdir
 set tags+=./tags
 set tags+=,tags
 set tags+=~/.vim/systags
-set tags+=/tdGUI/output/include/tags
+set tags+=~/.vim/tags/systags
 
 
 """""""""""""
@@ -1076,3 +1094,49 @@ set encoding=utf-8
 
 "let g:mkdp_path_to_chrome = "firefox"
 "let g:mkdp_auto_open = 1
+
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+
+" 所生成的数据文件的名称 "
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 检测 ~/.cache/tags 不存在就新建 "
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" 配置 ctags 的参数 "
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+"gtags 设置项
+set cscopetag " 使用 cscope 作为 tags 命令
+set cscopeprg='gtags-cscope' " 使用 gtags-cscope 代替 cscope
+let GtagsCscope_Auto_Load = 1
+let CtagsCscope_Auto_Map = 1
+let GtagsCscope_Quiet = 1
+let gtags_file=findfile("GTAGS", ";") "查找 gtags 文件
+if !empty(gtags_file)
+    exe "cs add" gtags_file
+endif
+
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'skywind3000/gutentags_plus'
+
+" enable gtags module
+let g:gutentags_modules = ['ctags', 'gtags_cscope']
+
+" config project root markers.
+let g:gutentags_project_root = ['.root']
+
+" generate datebases in my cache directory, prevent gtags files polluting my project
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+" change focus to quickfix window after search (optional).
+let g:gutentags_plus_switch = 1
+

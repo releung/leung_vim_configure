@@ -185,33 +185,33 @@ filetype off
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
-Plug 'https://github.com.cnpmjs.org/ludovicchabant/vim-gutentags'
-Plug 'https://github.com.cnpmjs.org/skywind3000/gutentags_plus'
+Plug 'https://github.com/ludovicchabant/vim-gutentags'
+Plug 'https://github.com/skywind3000/gutentags_plus'
 
 " vim 文本编辑器的精确颜色方案
-Plug 'https://github.com.cnpmjs.org/altercation/vim-colors-solarized'
+Plug 'https://github.com/altercation/vim-colors-solarized'
 
 " 配色方案
-Plug 'https://github.com.cnpmjs.org/tomasr/molokai'
+Plug 'https://github.com/tomasr/molokai'
 
 " 深蓝色背景配色方案
-Plug 'https://github.com.cnpmjs.org/vim-scripts/phd'
+Plug 'https://github.com/vim-scripts/phd'
 
 " 废弃
-"Plug 'https://github.com.cnpmjs.org/Lokaltog/vim-powerline'
-Plug 'https://github.com.cnpmjs.org/powerline/powerline'
+"Plug 'https://github.com/Lokaltog/vim-powerline'
+Plug 'https://github.com/powerline/powerline'
 
 " c++语法高亮显示(包括c++ 11/14/17)
-Plug 'https://github.com.cnpmjs.org/octol/vim-cpp-enhanced-highlight'
+Plug 'https://github.com/octol/vim-cpp-enhanced-highlight'
 
 " 可视化显示在代码的缩进级别
-Plug 'https://github.com.cnpmjs.org/nathanaelkane/vim-indent-guides'
+Plug 'https://github.com/nathanaelkane/vim-indent-guides'
 
 " switching between companion source files (e.g. ".h" and ".cpp")
-Plug 'https://github.com.cnpmjs.org/derekwyatt/vim-fswitch'
+Plug 'https://github.com/derekwyatt/vim-fswitch'
 
 " toggle, display and navigate marks
-Plug 'https://github.com.cnpmjs.org/kshenoy/vim-signature'
+Plug 'https://github.com/kshenoy/vim-signature'
 " mx           Toggle mark 'x' and display it in the leftmost column
 " dmx          Remove mark 'x' where x is a-zA-Z
 "
@@ -239,7 +239,7 @@ Plug 'https://github.com.cnpmjs.org/kshenoy/vim-signature'
 "  m<BS>        Remove all markers
 
 " Easily Highlight Lines with Marks, and Add/Remove Marks
-Plug 'https://github.com.cnpmjs.org/vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+Plug 'https://github.com/vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
 " <F1>            Turn on/update highlighting for all lines with markers
 " <F2>            Turn off highlighting for lines with markers
 " <SHIFT-F2> Erase all markers [a-z]
@@ -248,24 +248,24 @@ Plug 'https://github.com.cnpmjs.org/vim-scripts/BOOKMARKS--Mark-and-Highlight-Fu
 
 " displays tags in a window, ordered by scope
 " <Leader> ta 就是用这个插件
-Plug 'https://github.com.cnpmjs.org/majutsushi/tagbar'
+Plug 'https://github.com/majutsushi/tagbar'
 
 " indexing all files in project with ctags
-Plug 'https://github.com.cnpmjs.org/vim-scripts/indexer.tar.gz'
+Plug 'https://github.com/vim-scripts/indexer.tar.gz'
 
 " Just a library for some scripts
-Plug 'https://github.com.cnpmjs.org/vim-scripts/DfrankUtil'
+Plug 'https://github.com/vim-scripts/DfrankUtil'
 
 " managing options for different projects
-Plug 'https://github.com.cnpmjs.org/vim-scripts/vimprj'
+Plug 'https://github.com/vim-scripts/vimprj'
 
 " support asynchronous searching, and lets you edit file in-place with Edit Mode.
-Plug 'https://github.com.cnpmjs.org/dyng/ctrlsf.vim'
+Plug 'https://github.com/dyng/ctrlsf.vim'
 
 " 废弃
-"Plug 'https://github.com.cnpmjs.org/terryma/vim-multiple-cursors'
+"Plug 'https://github.com/terryma/vim-multiple-cursors'
 " Multiple cursors plugin
-Plug 'https://github.com.cnpmjs.org/mg979/vim-visual-multi'
+Plug 'https://github.com/mg979/vim-visual-multi'
 " select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
 " create cursors vertically with Ctrl-Down/Ctrl-Up
 " select one character at a time with Shift-Arrows
@@ -276,10 +276,10 @@ Plug 'https://github.com.cnpmjs.org/mg979/vim-visual-multi'
 " start insert mode with i,a,I,A
 
 " Vim plug for intensely nerdy commenting powers
-Plug 'https://github.com.cnpmjs.org/preservim/nerdcommenter'
+Plug 'https://github.com/preservim/nerdcommenter'
 
 " Ascii drawing plugin: lines, ellipses, arrows, fills, and more!
-Plug 'https://github.com.cnpmjs.org/vim-scripts/DrawIt'
+Plug 'https://github.com/vim-scripts/DrawIt'
 " \di           (starts in normal     drawing mode)       *drawit-\di*
 " :DrawIt       (starts in normal     drawing mode)       *drawit-DrawIt*
 " :DIstart      (starts in normal     drawing mode)       *drawit-DIstart*
@@ -290,37 +290,37 @@ Plug 'https://github.com.cnpmjs.org/vim-scripts/DrawIt'
 " :DIdbl        (starts in double-bar drawing mode)       *drawit-DIdbl*
 
 " The ultimate snippet solution for Vim
-Plug 'https://github.com.cnpmjs.org/SirVer/ultisnips'
+Plug 'https://github.com/SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them
-Plug 'https://github.com.cnpmjs.org/honza/vim-snippets'
+Plug 'https://github.com/honza/vim-snippets'
 
 " A code-completion engine for Vim
-Plug 'https://github.com.cnpmjs.org/Valloric/YouCompleteMe'
+Plug 'https://github.com/Valloric/YouCompleteMe'
 
 " pulling in C++ function prototypes into implementation files
-Plug 'https://github.com.cnpmjs.org/derekwyatt/vim-protodef'
+Plug 'https://github.com/derekwyatt/vim-protodef'
 
 " A tree explorer plugin for vim
-Plug 'https://github.com.cnpmjs.org/scrooloose/nerdtree'
+Plug 'https://github.com/scrooloose/nerdtree'
 
 " Elegant buffer explorer - takes very little screen space
-Plug 'https://github.com.cnpmjs.org/fholgado/minibufexpl.vim'
+Plug 'https://github.com/fholgado/minibufexpl.vim'
 
 " Smart selection of the closest text object
-Plug 'https://github.com.cnpmjs.org/gcmt/wildfire.vim'
+Plug 'https://github.com/gcmt/wildfire.vim'
 
 " A git mirror of gundo.vim
-Plug 'https://github.com.cnpmjs.org/sjl/gundo.vim'
+Plug 'https://github.com/sjl/gundo.vim'
 
 " Instant Markdown previews from VIm!
-Plug 'https://github.com.cnpmjs.org/suan/vim-instant-markdown'
-" Plug 'https://github.com.cnpmjs.org/iamcco/markdown-preview.vim'
+Plug 'https://github.com/suan/vim-instant-markdown'
+" Plug 'https://github.com/iamcco/markdown-preview.vim'
 
 " keep and restore fcitx state when leaving/re-entering insert mode
-Plug 'https://github.com.cnpmjs.org/lilydjwg/fcitx.vim'
+Plug 'https://github.com/lilydjwg/fcitx.vim'
 
 " Run interactive commands inside a Vim buffer
-Plug 'https://github.com.cnpmjs.org/lrvick/Conque-Shell'
+Plug 'https://github.com/lrvick/Conque-Shell'
 " :ConqueTerm bash
 " :ConqueTerm mysql -h localhost -u joe -p sock_collection
 " :ConqueTerm Powershell.exe
@@ -332,33 +332,33 @@ Plug 'https://github.com.cnpmjs.org/lrvick/Conque-Shell'
 
 " Vim plug that allows you to visually select increasingly larger regions of
 " text using the same key combination.
-Plug 'https://github.com.cnpmjs.org/terryma/vim-expand-region'
+Plug 'https://github.com/terryma/vim-expand-region'
 
 " A command-line fuzzy finder
-Plug 'https://github.com.cnpmjs.org/junegunn/fzf',{'do':{->fzf#install()}}
+Plug 'https://github.com/junegunn/fzf',{'do':{->fzf#install()}}
 
 " ring motion and visual selection to the :grep command
-Plug 'https://github.com.cnpmjs.org/inside/vim-grep-operator'
+Plug 'https://github.com/inside/vim-grep-operator'
 
 " Go development plugin for Vim
-Plug 'https://github.com.cnpmjs.org/fatih/vim-go'
+Plug 'https://github.com/fatih/vim-go'
 
 " Vim compiler plugin for Go (golang)
-Plug 'https://github.com.cnpmjs.org/rjohnsondev/vim-compiler-go'
+Plug 'https://github.com/rjohnsondev/vim-compiler-go'
 
 " The missing motion for Vim
 " 两个字符快速跳转
-Plug 'https://github.com.cnpmjs.org/justinmk/vim-sneak'
+Plug 'https://github.com/justinmk/vim-sneak'
 " s{char}{char}
 
 " Asynchronous translating plugin for Vim/Neovim
 " 异步翻译
-Plug 'https://github.com.cnpmjs.org/voldikss/vim-translate-me'
+Plug 'https://github.com/voldikss/vim-translate-me'
 
 " Vim plugin to diff two directories
 " vim 比较目录插件
 " 使用方法 :DirDiff <dir1> <dir2>
-Plug 'https://github.com.cnpmjs.org/will133/vim-dirdiff'
+Plug 'https://github.com/will133/vim-dirdiff'
 
 " 插件列表结束
 call plug#end()

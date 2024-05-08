@@ -113,6 +113,12 @@ Ctrl+t 跳转回来
 cd ~/.fzf && git pull && ./install
 ```
 
+## 10.
+```bash
+sudo apt install universal-ctags
+sudo apt install fcitx5
+```
+
 # error 处理
 ## error 00:
 
